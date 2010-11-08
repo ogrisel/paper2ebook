@@ -127,13 +127,21 @@ public class Transformer extends PageExtractor {
 
     public static void main(String[] args) throws IOException,
             COSVisitorException {
-        if (args.length != 2) {
-            System.err.println("Usage: java -jar paper2ebook-*.jar input.pdf output.pdf");
+        String original_pdf;
+        if (args.length < 1 || args.length > 2) {
+            System.err.println("Usage: java -jar paper2ebook-*.jar input.pdf [output.pdf]");
             return;
+        } else {
+            original_pdf = args[0];
         }
-        Transformer transformer = new Transformer(PDDocument.load(args[0]));
+        Transformer transformer = new Transformer(PDDocument.load(original_pdf));
         PDDocument output = transformer.extract();
-        output.save(args[1]);
+        if (args.length == 1) {
+            String orig_no_pdf = original_pdf.substring(0, original_pdf.length() - 4);
+            output.save(orig_no_pdf + "_ebook.pdf");
+        } else {
+            output.save(args[1]);
+        }
     }
 
 }
