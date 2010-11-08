@@ -36,10 +36,9 @@ You need a Java 6 SDK and Apache Maven, then:
 
 ## Usage
 
-    $ java -jar target/paper2ebook-VERSION.jar original.pdf transformed.pdf
+    $ java -jar target/paper2ebook-VERSION.jar original.pdf [transformed.pdf]
 
-TODO: make it possible to omit the output file and name it
-original_ebook.pdf automatically.
+If the output file is omitted, the file created is original_ebook.pdf.
 
 
 ## How it works
